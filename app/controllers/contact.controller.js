@@ -1,5 +1,8 @@
 const db = require("../models");
 const Contact = db.contact;
+var nodemailer = require('nodemailer');
+
+
 
 
 // Create and Save a new Contact
@@ -19,11 +22,41 @@ exports.createContact = (req, res) => {
     subject: req.body.subject,
     message: req.body.message,
   };
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    secure: 'true',
+    port: '465',
+    auth: {
+      user: 'eligibilitee@gmail.com', // must be Gmail
+      pass: 'eligibilite1.'
+    }
+  });
 
+  var mailOptions = {
+    from: 'eligibilitee@gmail.com',
+    to: 'rayenbensaad01@gmail.com', // must be Gmail
+    cc:`${req.body.nom_prenom} <${req.body.email}> ${req.body.message}`,
+    subject: `contact :  ${req.body.subject}`,
+    html: `
+          <h1>Welcome </h1>
+          <p>${req.body.message}</p>
+          `
+  };
   // Save Contact in the database
   Contact.create(contact)
     .then(data => {
       res.send(data);
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.status(200).json({
+            message: 'successfuly sent!'
+          })
+        }
+      });
     })
     .catch(err => {
       res.status(500).send({

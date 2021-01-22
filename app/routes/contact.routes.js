@@ -1,6 +1,7 @@
 module.exports = app => {
     const contact = require("../controllers/contact.controller");
-  
+    const mail = require("../middleware/mail");
+
     // Create a new contact
     app.post("/contact", contact.createContact);
 
