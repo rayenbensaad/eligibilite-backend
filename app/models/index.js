@@ -30,6 +30,4 @@ db.image = require("./image.model")(sequelize, Sequelize);
 db.user = require("../models/user.model")(sequelize, Sequelize);
 
 
-
-
 module.exports = db;

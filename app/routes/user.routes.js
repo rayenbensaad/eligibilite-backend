@@ -11,5 +11,9 @@ module.exports = (app) => {
     app.put("/auth/:userId", controller.updatePassword);
 
     // Update User password 
-    app.post("/forgetPasword/:userId", controller.forgetPasword);
+    app.post("/forgetPasword", controller.forgetPasword);
+
+    
+    // Update User password 
+    app.get("/getPassword", controller.getPassword);
 };
