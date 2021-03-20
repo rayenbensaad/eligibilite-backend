@@ -11,19 +11,32 @@ exports.createForm = (req, res) => {
     });
     return;
   }
-
+  console.log(req.body.num_tel);
   // Create a Form
   const form = {
     nom_prenom: req.body.nom_prenom,
     code_postale: req.body.code_postale,
     num_tel: req.body.num_tel,
     email: req.body.email,
-    date_rappel: req.body.date_rappel,
-    isole: req.body.isole,
+    commune: req.body.commune,
+    logement:req.body.logement,
+
     energie_chauffage: req.body.energie_chauffage,
+    isole: req.body.isole,
+    surface_ITE:req.body.surface_ITE,
+    surface_ITI:req.body.surface_ITI,
+    surface_PAC:req.body.surface_PAC,
+    nombre_pieces_PAC:req.body.nombre_pieces_PAC,
+    combles:req.body.combles,
+    surface_combles:req.body.surface_combles,
+    surface_cave:req.body.surface_cave,
+    surface_garage:req.body.surface_garage,
+    surface_vide_sanitaire:req.body.surface_vide_sanitaire,
+    hauteur_vide_sanitaire:req.body.hauteur_vide_sanitaire,
+    lieu_maison:req.body.lieu_maison,
     nbr_personne: req.body.nbr_personne,
     revenu_annuel: req.body.revenu_annuel,
-    surface_isoler: req.body.surface_isoler,
+    
   };
 
   // Save Form in the database
@@ -34,7 +47,7 @@ exports.createForm = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Some error occurred while creating the Form."
       });
     });
 };
@@ -48,7 +61,7 @@ exports.findFormById = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: "Error retrieving Form with id=" + id
       });
     });
 };

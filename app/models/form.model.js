@@ -41,31 +41,40 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       surface_PAC: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       nombre_pieces_PAC: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       combles: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       surface_combles: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       surface_cave: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       surface_garage: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       surface_vide_sanitaire: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       hauteur_vide_sanitaire: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       lieu_maison: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       nbr_personne: {
         type: DataTypes.STRING

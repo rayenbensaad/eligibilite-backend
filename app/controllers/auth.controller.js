@@ -22,6 +22,7 @@ exports.signin = (req, res) => {
             if (!user) {
                 return res.status(404).send({ message: "User Not found." });
             }
+            console.log(user)
 
             var passwordIsValid = bcrypt.compareSync(
                 req.body.password,
@@ -71,6 +72,28 @@ exports.updatePassword = (req, res) => {
         })
 };
 
+
+exports.updateEmail = (req, res) => {
+    const UserId = req.params.userId;
+
+    User.findByPk(UserId)
+        .then((user) => {
+            var passwordIsValid = bcrypt.compareSync(
+                req.body.password,
+                user.password
+            );
+            // console.log(req.body.password, '----------',user.password,passwordIsValid)
+            if (passwordIsValid) {
+
+                user.email = req.body.email;
+                user.save();
+                res.status(200).json({ message: 'success' });
+            }
+            else
+                return res.status(500).json({ message: 'error' });
+
+        })
+};
 
 exports.forgetPasword = (req, res) => {
     const UserId = req.params.userId;

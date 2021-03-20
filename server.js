@@ -36,7 +36,7 @@ require("./app/routes/form.routes")(app);
 require("./app/routes/contact.routes")(app);
 require("./app/routes/post.routes")(app);
 require("./app/routes/user.routes")(app);
-
+require("./app/routes/newsletter.routes")(app);
 
 app.use('/uploads',express.static('uploads'))
 

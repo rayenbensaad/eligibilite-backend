@@ -13,7 +13,9 @@ module.exports = (app) => {
     // Update User password 
     app.post("/forgetPasword", controller.forgetPasword);
 
-    
+    // Update User Email 
+    app.post("/UpdateEmail/:userId", controller.updateEmail);
+
     // Update User password 
     app.get("/getPassword", controller.getPassword);
 };

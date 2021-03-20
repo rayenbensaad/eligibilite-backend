@@ -18,4 +18,5 @@ module.exports = app => {
     app.delete("/contact", contact.deleteAllContact);
   
 
+
   };

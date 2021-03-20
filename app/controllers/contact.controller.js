@@ -1,5 +1,6 @@
 const db = require("../models");
 const Contact = db.contact;
+const Newsletter = db.newsletter;
 var nodemailer = require('nodemailer');
 
 
@@ -138,4 +139,42 @@ exports.deleteAllContact = (req, res) => {
         err.message || "Some error occurred while removing all Form."
     });
   });
+};
+
+
+
+
+
+  // Create and Save a new Post
+exports.newsletter = (req, res) => {
+    // Create a Post
+    const newsletter = {
+      email: req.body.email,
+    };
+
+  // Save post in the database
+  Newsletter.create(newsletter)
+    .then(data => {
+      res.send(data)
+      })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating newletter."
+      });
+    });
+};
+
+
+// Get all findAllNewsletter 
+exports.findAllNewsletter = (req, res) => {
+  Newsletter.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Newsletter"
+      });
+    });
 };

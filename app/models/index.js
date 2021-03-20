@@ -28,6 +28,9 @@ db.contact = require("./contact.model")(sequelize, Sequelize);
 db.post = require("./post.model")(sequelize, Sequelize);
 db.image = require("./image.model")(sequelize, Sequelize);
 db.user = require("../models/user.model")(sequelize, Sequelize);
+db.newsletter = require("../models/newsletter.model")(sequelize, Sequelize);
+
+
 
 
 module.exports = db;
